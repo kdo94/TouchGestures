@@ -94,20 +94,24 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
         scrolls++;
-        gesturesLogTextView.append("\nonScroll: distanceX is " + (motionEvent1.getX() - motionEvent.getX()) +
-                                    " distanceY is " + (motionEvent1.getY() - motionEvent.getY()));
+        gesturesLogTextView.append("\nonScroll: distanceX is " + v + " distanceY is " + v1);
         scrollTextView.setText(String.valueOf(scrolls));
         return false;
     }
 
     @Override
     public void onLongPress(MotionEvent motionEvent) {
-
+        longPresses++;
+        gesturesLogTextView.append("\nonLongPress touch event");
+        longPressTextView.setText(String.valueOf(longPresses));
     }
 
     @Override
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        return false;
+        flings++;
+        gesturesLogTextView.append("\nonFling: velocityX is " + v + " velocityY is " + v1);
+        flingTextView.setText(String.valueOf(flings));
+        return true;
     }
 
     public void clearAll(View view){
